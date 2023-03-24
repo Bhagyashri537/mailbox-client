@@ -1,8 +1,10 @@
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { BACK_Url } from "../utils/Img";
 const Login = () => {
     const emailref = useRef();
   const passwordref = useRef();
+  const navigate = useNavigate()
  
   const submitHandler = (e) => {
     e.preventDefault()
@@ -43,6 +45,7 @@ const Login = () => {
       })
       .then((data) => {
        alert('login sucessful')
+       navigate('/mail')
        
       })
       .catch((error) => {
