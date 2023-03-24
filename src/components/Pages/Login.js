@@ -1,10 +1,13 @@
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { BACK_Url } from "../utils/Img";
+import { useDispatch } from "react-redux";
+import { authAction } from "../store/authSlice";
 const Login = () => {
     const emailref = useRef();
   const passwordref = useRef();
   const navigate = useNavigate()
+  const dispatch = useDispatch()
  
   const submitHandler = (e) => {
     e.preventDefault()
@@ -13,7 +16,7 @@ const Login = () => {
     const enteredPassword = passwordref.current.value;
     
 
-      fetch( "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyACfZt78m8N4jVa_ThsiHNtU2W9v-GFPVA", {
+      fetch( "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDb1PyhtvnCUfBwxNI7BihjOf_XBkn5mXU", {
       method: "POST",
       body: JSON.stringify({
         email: enteredEmail,
@@ -28,7 +31,8 @@ const Login = () => {
       .then((response) => {
        
         if (response.ok) {
-          
+          const replacedemail = enteredEmail.replace('@','').replace('.','')
+          localStorage.setItem('email',replacedemail)
           return response.json();
         } else {
           return response.json().then((data) => {
@@ -44,6 +48,7 @@ const Login = () => {
         }
       })
       .then((data) => {
+        dispatch(authAction.LogIn(data.idToken))
        alert('login sucessful')
        navigate('/Welcome')
        

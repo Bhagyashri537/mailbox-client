@@ -18,7 +18,7 @@ const Signup = () => {
         alert("password is not matched");
       }
 
-      fetch( "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyACfZt78m8N4jVa_ThsiHNtU2W9v-GFPVA", {
+      fetch( "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDb1PyhtvnCUfBwxNI7BihjOf_XBkn5mXU", {
       method: "POST",
       body: JSON.stringify({
         email: enteredEmail,

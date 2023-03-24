@@ -1,6 +1,7 @@
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
+import Inbox from './components/Pages/Inbox';
 import Login from './components/Pages/Login';
 import Sentbox from './components/Pages/Sentbox';
 import Signup from './components/Pages/Signup';
@@ -15,6 +16,7 @@ function App() {
     <Route path='/login' element={<Login/>} />
     <Route path='/welcome' element={<Welcome/>}/>
     <Route path= '/sentmail' element={<Sentbox/>}/>
+    <Route path='/inbox' element={<Inbox/>}/>
     </Routes>
     
     </BrowserRouter>

@@ -20,7 +20,7 @@ const msgref = useRef()
     const enteredEmail = emailref.current.value;
     const enteredSubject = subjectref.current.value;
     const enteredMsg = msgref.current.value;
-    const replacemail = enteredEmail.replace("@", "").replace(".", "");
+    
 
     const maildata = {
         email: enteredEmail,
@@ -31,9 +31,7 @@ const msgref = useRef()
 
 
     fetch(
-      `https://mailbox-32314-default-rtdb.firebaseio.com/mail/${localStorage.getItem(
-        "key"
-      )}.json`,
+      `https://mail-box-client-831b1-default-rtdb.firebaseio.com/mail/${localStorage.getItem("email")}.json`,
       {
         method: "POST",
         body: JSON.stringify(maildata),
@@ -57,7 +55,7 @@ const msgref = useRef()
       })
       .then((data) => {
         console.log(data);
-        localStorage.setItem("key", replacemail);
+        
         alert('data added successfully')
       })
       .catch((err) => {

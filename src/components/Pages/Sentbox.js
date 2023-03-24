@@ -8,9 +8,7 @@ const Sentbox = () => {
 
   const getSavedata = () => {
     fetch(
-      `https://mailbox-32314-default-rtdb.firebaseio.com/mail/${localStorage.getItem(
-        "key"
-      )}.json`
+      `https://mail-box-client-831b1-default-rtdb.firebaseio.com/mail/${localStorage.getItem("email")}.json`
     )
       .then((res) => {
         if (res.ok) {

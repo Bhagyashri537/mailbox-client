@@ -1,9 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
+import authslice from "./authSlice";
+import inboxslice from "./inboxSlice";
 import mailSlice from './sentemailSlice'
 
 const store = configureStore({
     reducer: {
-        mailbox : mailSlice
+        auth : authslice,
+        mailbox : mailSlice,
+        inboxmail : inboxslice
     }
 })
 
