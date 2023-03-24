@@ -1,4 +1,4 @@
-import { BACK_Url, brackground_url } from "../utils/Img";
+import { BACK_Url } from "../utils/Img";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 

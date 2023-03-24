@@ -2,8 +2,9 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import Login from './components/Pages/Login';
-import Mail from './components/Pages/Mail';
+import Sentbox from './components/Pages/Sentbox';
 import Signup from './components/Pages/Signup';
+import Welcome from './components/Pages/Welcome';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
     
     <Route path='/' element={<Signup/>}/>
     <Route path='/login' element={<Login/>} />
-    <Route path='mail' element={<Mail/>}/>
+    <Route path='/welcome' element={<Welcome/>}/>
+    <Route path= '/sentmail' element={<Sentbox/>}/>
     </Routes>
     
     </BrowserRouter>

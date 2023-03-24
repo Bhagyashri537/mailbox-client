@@ -45,7 +45,7 @@ const Login = () => {
       })
       .then((data) => {
        alert('login sucessful')
-       navigate('/mail')
+       navigate('/Welcome')
        
       })
       .catch((error) => {
