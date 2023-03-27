@@ -1,14 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { mailActions } from "../store/sentemailSlice";
+import { Link } from "react-router-dom";
 
-const Sentbox = () => {
+const Sentbox =  () => {
   const data = useSelector((store) => store.mailbox.sentmail);
   const dispatch = useDispatch();
 
   const getSavedata = () => {
     fetch(
-      `https://mail-box-client-831b1-default-rtdb.firebaseio.com/mail/${localStorage.getItem("email")}.json`
+      `https://mail-box-client-831b1-default-rtdb.firebaseio.com/mail/${localStorage.getItem("email")}/sent.json`
     )
       .then((res) => {
         if (res.ok) {
@@ -25,7 +26,7 @@ const Sentbox = () => {
             id: i,
             email: data[i].email,
             subject: data[i].subject,
-            msg: data[i].msg,
+            message: data[i].message,
           });
         }
 
@@ -41,15 +42,40 @@ const Sentbox = () => {
   }, []);
 
   return (
-    <div>
-      {data.map((item, index) => (
-        <div key={index}>
-          <h3>{item.email}</h3>
-          <h2>{item.subject}</h2>
-          <h2>{item.msg}</h2>
-        </div>
-      ))}
-    </div>
+   
+<div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3 bg-gray-50 dark:bg-gray-800">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Messages
+                </th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        
+         {data.map((item, index) => (
+            <tr key={index} class="border-b border-gray-200 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap bg-gray-50 dark:text-white dark:bg-gray-800">
+                {item.email}
+                </th>
+                <td class="px-6 py-4">
+                {item.subject} -- {item.message}
+                </td>
+                
+            </tr>
+
+             ))}
+            </tbody>
+      
+      
+      </table>
+      </div>
+    
   );
 };
 export default Sentbox;
