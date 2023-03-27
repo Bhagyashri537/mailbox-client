@@ -1,19 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
-    inbox:[]
+const initialinboxState = {
+    inbox:[],
+    showMsg: true
 }
 
 const inboxslice = createSlice({
     name:'inbox',
-    initialState:initialState,
+    initialState:initialinboxState,
     reducers:{
         setinbox(state,action){
             state.inbox = action.payload
+        },
+        setReadMessage(state, action){
+            state.showMsg = action.payload
         }
     }
 
-
+    
 })
 
 export const inboxAction = inboxslice.actions
