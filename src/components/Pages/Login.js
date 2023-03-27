@@ -14,6 +14,7 @@ const Login = () => {
 
     const enteredEmail = emailref.current.value;
     const enteredPassword = passwordref.current.value;
+    localStorage.setItem('key', enteredEmail)
     
 
       fetch( "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDb1PyhtvnCUfBwxNI7BihjOf_XBkn5mXU", {
